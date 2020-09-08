@@ -13,8 +13,11 @@ Before to execute the "tfapply.sh" script, you have to provide the following req
 3- Customize the Azure parameters in the terraform variable file, Note: I assume that your Azure credentials already exists in your home directory
 
 4- Accept the legal terms of the Velocloud image. For that, you can use the Azure CLI:
+
 4a- To list all Velocloud images: az vm image list --publisher velocloud --all
+
 4b- to Accept the legal terms: velocloud:velocloud-virtual-edge-3x:velocloud-virtual-edge-3x:3.3.2 
+
 
 To connect to the VeloCloud Edge via SSH, the private key will provide at the end of "tfapply.sh" execution. copy the private key in a file named "vce.pem".
 
