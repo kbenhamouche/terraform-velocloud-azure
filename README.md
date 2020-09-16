@@ -10,7 +10,7 @@ Before to execute the "tfapply.sh" script, you have to provide the following req
 
 2- Provide the Activation Code AND the VCO address in the "cloud-init" file,
 
-3- Customize the Azure parameters in the terraform variable file, Note: I assume that your Azure credentials already exists in your home directory
+3- Customize the Azure parameters in the terraform variable file, Note: Your Azure credentials already exist in your home directory
 
 4- Accept the legal terms of the Velocloud image. For that, you can use the Azure CLI:
 
@@ -20,9 +20,10 @@ Before to execute the "tfapply.sh" script, you have to provide the following req
 
 
 To connect to the VeloCloud Edge via SSH, the private key will provide at the end of "tfapply.sh" execution. copy the private key in a file named "vce.pem".
+The VCE SSH access is only possible from a VM deployed in the Azure private subnet. You should consider to deploy a jumpserver. In this case, do not forget to add the IP@ under VCO -> Configure Edge -> Firewall -> Edge Access
 
 To destroy the VeloCloud Edge and the environment, execute the "tfdestroy.sh" script.
 
-Finally, every time you create or recreate the VeloCloud, you have to create a new Edge config in VCO to get the new Activation Code OR you can do a RMA and generate the new Activation Code (I will "maybe" automate this part)
+Finally, every time you create or recreate the VeloCloud, you have to create a new Edge config in VCO to get the new Activation Code OR you can do a RMA and generate the new Activation Code under VCO -> Configure Edge -> Edge Overview -> RMA Reactivation
 
 Enjoy !
