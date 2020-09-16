@@ -73,16 +73,6 @@ resource "azurerm_subnet_route_table_association" "private2rt" {
   route_table_id = azurerm_route_table.velo-private-rt.id
 }
 
-// Configure static route from private subnet to outside
-resource "azurerm_route" "edge-route" {
-    name = "default-route-via-vce"
-    resource_group_name = azurerm_resource_group.velo-demo-rg.name 
-    route_table_name = azurerm_route_table.velo-private-rt.name
-    address_prefix = "0.0.0.0/0"
-    next_hop_type = "VirtualAppliance"
-    next_hop_in_ip_address = var.private_ip
-}
-
 // define security group for LAN interface
 resource "azurerm_network_security_group" "velo-sg-lan" {
   name = "velo-sg-lan"
@@ -255,4 +245,14 @@ resource "azurerm_virtual_machine" "velo-vedge" {
     tags = {
         environment = "production"
     }
+}
+
+// Static route for branch (example)
+resource "azurerm_route" "branch_route" {
+    name = "branch-route"
+    resource_group_name = azurerm_resource_group.velo-demo-rg.name 
+    route_table_name = azurerm_route_table.velo-private-rt.name
+    address_prefix = "10.5.99.0/24"
+    next_hop_type = "VirtualAppliance"
+    next_hop_in_ip_address = var.private_ip
 }
