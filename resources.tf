@@ -75,7 +75,7 @@ resource "azurerm_subnet_route_table_association" "private2rt" {
 
 // define security group for LAN interface
 resource "azurerm_network_security_group" "velo-sg-lan" {
-  name = "velo-sg-lan"
+  name = "vcn-sg-lan"
   location = azurerm_resource_group.velo-demo-rg.location
   resource_group_name = azurerm_resource_group.velo-demo-rg.name
   security_rule {
@@ -96,7 +96,7 @@ resource "azurerm_network_security_group" "velo-sg-lan" {
 
 // define security group for WAN interface
 resource "azurerm_network_security_group" "velo-sg-wan" {
-  name = "velo-sg-wan"
+  name = "vcn-sg-wan"
   location = azurerm_resource_group.velo-demo-rg.location
   resource_group_name = azurerm_resource_group.velo-demo-rg.name
   security_rule {
